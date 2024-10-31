@@ -1,3 +1,3 @@
-# Basic Postgres Jupyter
+# Postgres FastAPI Jupyter
 
-This repository provides a basic python environment connected with PostgreSQL database using Jupyterlab.
+This repository provides a FastAPI template connected with PostgreSQL database using Jupyterlab.
