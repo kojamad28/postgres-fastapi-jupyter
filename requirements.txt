@@ -1,8 +1,0 @@
-black
-ruff
-mypy
-tox
-jupyterlab
-psycopg
-sqlalchemy
-python-dotenv

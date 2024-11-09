@@ -1,0 +1,11 @@
+black
+ruff
+mypy
+tox
+psycopg
+sqlmodel
+sqlacodegen_v2
+fastapi[all]
+fastapi-structlog
+uvicorn[standard]
+alembic
