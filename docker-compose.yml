@@ -31,7 +31,7 @@ services:
     networks:
       - postgres-fastapi-jupyter-network
   nginx:
-    image: kojamad28/python-nginx
+    image: kojamad28/fastapi-nginx
     container_name: nginx
     build: ./nginx
     volumes:
