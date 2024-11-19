@@ -22,10 +22,13 @@ def retrieve_model(session: Session, model: type[SQLModel], index_col: str, targ
     return db_model
 
 
-def update_model(session: Session, model: type[SQLModel], index_col: str, target: str):
+def update_model(session: Session, model: type[SQLModel], index_col: str, target: str, updated_model: SQLModel):
     db_model = session.exec(select(model).where(getattr(model, index_col) == target)).first()
     if not db_model:
         raise HTTPException(status_code=404, detail=f'{target} not found')
+    updated_model_data = updated_model.dict(exclude_unset=True)
+    for key, value in updated_model_data.items():
+        setattr(db_model, key, value)
     session.add(db_model)
     session.commit()
     session.refresh(db_model)

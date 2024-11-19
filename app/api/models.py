@@ -21,4 +21,5 @@ class RetrievedUser(BaseUser):
 
 
 class UpdatedUser(BaseUser):
-    id: int
+    name: Optional[str] = Field(default=None, index=True)
+    email: Optional[str] = Field(default=None)
