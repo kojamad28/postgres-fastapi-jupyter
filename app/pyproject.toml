@@ -22,6 +22,12 @@ legacy_tox_ini = """
 
 [tool.ruff]
 lint.ignore = ['E501']
-lint.select = ['C9', 'E', 'F', 'W', 'I']
+lint.select = [
+    'C9',  # mccabe
+    'E',  # pycodestyle Error
+    'F',  # PyFlakes
+    'W',  # pycodestyle Warning
+    'I',  # isort
+]
 line-length = 120
 src = ['.']
