@@ -9,3 +9,8 @@ fastapi[all]
 fastapi-structlog
 uvicorn[standard]
 alembic
+pytest
+pytest-randomly
+pytest-cov
+pytest-structlog
+factory-boy
