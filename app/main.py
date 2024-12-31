@@ -1,13 +1,13 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from api import routers
 from api.dependencies import create_db_and_tables
+from api.routers import user
 
 app = FastAPI()
 
 app.include_router(
-    routers.router,
+    user.router,
     prefix="/api/user",
     tags=["user"]
 )
