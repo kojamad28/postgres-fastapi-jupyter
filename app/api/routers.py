@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlmodel import Session
 
 from . import models, crud
-from .db import get_session
+from .dependencies import get_session
 
 
 router = APIRouter()

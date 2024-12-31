@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from api import routers
-from api.db import create_db_and_tables
+from api.dependencies import create_db_and_tables
 
 app = FastAPI()
 
