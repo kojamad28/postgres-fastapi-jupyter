@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from sqlmodel import Session
 
 from . import models, crud
@@ -8,8 +8,8 @@ from .db import get_session
 router = APIRouter()
 
 @router.get('/users/', response_model=list[models.RetrievedUser])
-def get_users(session: Session = Depends(get_session)):
-    return crud.retrieve_models(session, models.User)
+def get_users(session: Session = Depends(get_session), offset: int = Query(default=0), limit: int = Query(default=100, lte=100)):
+    return crud.retrieve_models(session, models.User, offset, limit)
 
 
 @router.get('/user/{target}', response_model=models.RetrievedUser)

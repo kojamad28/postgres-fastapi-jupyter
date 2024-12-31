@@ -10,7 +10,7 @@ def create_model(session: Session, model: type[SQLModel], created_model: SQLMode
     return db_model
 
 
-def retrieve_models(session: Session, model: type[SQLModel], offset: int = 0, limit: int = 100):  # TODO: Query(default=100, lte=100)などにしてみる。
+def retrieve_models(session: Session, model: type[SQLModel], offset: int, limit: int):
     models = session.exec(select(model).offset(offset).limit(limit)).all()
     return models
 
