@@ -2,7 +2,7 @@ jupyterlab
 structlog
 requests
 numpy
-pandas
+pandas[performance]
 polars
 scipy
 statsmodels
