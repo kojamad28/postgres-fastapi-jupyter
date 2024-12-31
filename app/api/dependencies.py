@@ -2,8 +2,8 @@ from dotenv import dotenv_values
 from sqlalchemy import URL
 from sqlmodel import SQLModel, Session, create_engine
 
-config = dotenv_values("db/.env.dev")
-#config = dotenv_values("db/.env")
+config = dotenv_values("postgres/.env.dev")
+#config = dotenv_values("postgres/.env")
 
 DEBUG = config.get("DEBUG", "false").lower() == "true"
 
