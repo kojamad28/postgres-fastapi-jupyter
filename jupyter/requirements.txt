@@ -1,4 +1,14 @@
 jupyterlab
+black
+ruff
+mypy
+tox
+pytest
+pytest-snapshot
+structlog
+pytest-structlog
+line_profiler
+memory_profiler
 requests
 numpy
 pandas
