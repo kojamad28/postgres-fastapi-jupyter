@@ -48,8 +48,9 @@ services:
     build:
       context: ./jupyter
       args:
-        REQ_TXT: "requirements.txt"
-    image: kojamad28/postgres-fastapi-jupyter
+        REQ_DIR: "requirements/"
+        REQ_TXT: "prod.txt"
+    image: kojamad28/postgres-fastapi-jupyter-prod
     container_name: jupyterlab
     command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''
     ports:

@@ -1,0 +1,11 @@
+jupyterlab
+structlog
+requests
+numpy
+pandas
+polars
+scipy
+statsmodels
+matplotlib
+seaborn
+scikit-learn
