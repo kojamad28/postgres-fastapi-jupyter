@@ -1,4 +1,4 @@
-from fastapi import HTTPException, Query
+from fastapi import HTTPException
 from sqlmodel import SQLModel, Session, select
 
 
