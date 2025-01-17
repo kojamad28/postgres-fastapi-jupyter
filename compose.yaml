@@ -46,7 +46,7 @@ services:
       - postgres-fastapi-jupyter-network
   jupyter:
     build:
-      context: ./jupyter
+      context: ./notebooks
       args:
         REQ_DIR: "requirements/"
         REQ_TXT: "dev.txt"
