@@ -1,31 +1,29 @@
-from dotenv import dotenv_values
-from sqlalchemy import URL
-from sqlmodel import SQLModel, Session, create_engine
+import os
 
-config = dotenv_values("postgres/.env.dev")
-#config = dotenv_values("postgres/.env")
+from sqlmodel import SQLModel
 
-DEBUG = config.get("DEBUG", "false").lower() == "true"
+from postgres.session import get_engine, get_sessionlocal
 
-db_url = URL.create(
-        "postgresql+psycopg",
-        username=config["POSTGRES_USER"],
-        password=config["POSTGRES_PASSWORD"],  # plain (unescaped) text
-        host=config["POSTGRES_HOST"],
-        port=config["POSTGRES_PORT"],
-        database=config["POSTGRES_DB"],
-        query={"options": f"-c search_path={config['POSTGRES_SCHEMA']}"},
-)
-connect_args = {}
-engine = create_engine(db_url, echo=DEBUG, connect_args=connect_args)
+
+def read_boolean(value: str) -> bool:
+    return value.lower() in ('true', 't', 'yes', 'y', 'on', '1')
+
+DEBUG = read_boolean(str(os.environ.get("DEBUG", "False")))
+
+if DEBUG:
+    DOTENV_PATH = "postgres/.env.dev"
+else:
+    DOTENV_PATH = "postgres/.env"
 
 
 def create_db_and_tables():
+    engine = get_engine(DOTENV_PATH)
     SQLModel.metadata.create_all(engine)
 
 
-async def get_session():
-    with Session(engine) as session:
+async def get_session(dotenv_path: str = DOTENV_PATH):
+    SessionLocal = get_sessionlocal(dotenv_path)
+    with SessionLocal() as session:
         try:
             yield session
         except:
