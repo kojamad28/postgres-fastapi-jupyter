@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Depends, Query
 from sqlmodel import Session
 
-from api.crud.common import retrieve_models, retrieve_model, create_model, update_model, delete_model
+from api.crud.base import retrieve_models, retrieve_model, create_model, update_model, delete_model
 from api.dependencies import get_session
 from api.models.accounts import User
 from api.schemas.user import RetrievedUser, CreatedUser, UpdatedUser
