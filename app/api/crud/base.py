@@ -25,7 +25,6 @@ def create_model(session: Session, model: type[SQLModel], created_model: SQLMode
     db_model = model.from_orm(created_model)
     session.add(db_model)
     session.commit()
-    session.refresh(db_model)
     return db_model
 
 
@@ -48,9 +47,7 @@ def update_model(session: Session, model: type[SQLModel], index_col: str, target
     updated_model_data = updated_model.dict(exclude_unset=True)
     for key, value in updated_model_data.items():
         setattr(db_model, key, value)
-    session.add(db_model)
     session.commit()
-    session.refresh(db_model)
     return db_model
 
 
