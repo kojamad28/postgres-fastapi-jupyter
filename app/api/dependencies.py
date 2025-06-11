@@ -2,7 +2,7 @@ import os
 
 from sqlmodel import SQLModel
 
-from postgres.session import get_engine, get_sessionlocal
+from db.session import get_engine, get_sessionlocal
 
 
 def read_boolean(value: str) -> bool:
