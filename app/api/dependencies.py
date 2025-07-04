@@ -22,10 +22,11 @@ def create_db_and_tables():
 
 
 async def get_session(dotenv_path: str = DOTENV_PATH):
-    SessionLocal = get_sessionlocal(dotenv_path)
-    with SessionLocal() as session:
-        try:
-            yield session
-        except:
-            session.rollback()
-            raise
+    session = get_sessionlocal(dotenv_path)()
+    try:
+        yield session
+    except:
+        session.rollback()
+        raise
+    finally:
+        session.close()
