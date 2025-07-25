@@ -1,8 +1,11 @@
 import os
+from pathlib import Path
 
 from sqlmodel import SQLModel
 
 from db.session import get_engine, get_sessionlocal
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 def read_boolean(value: str) -> bool:
@@ -11,9 +14,9 @@ def read_boolean(value: str) -> bool:
 DEBUG = read_boolean(str(os.environ.get("DEBUG", "False")))
 
 if DEBUG:
-    DOTENV_PATH = "postgres/.env.dev"
+    DOTENV_PATH = BASE_DIR / "db" / ".env.dev"
 else:
-    DOTENV_PATH = "postgres/.env"
+    DOTENV_PATH = BASE_DIR / "db" / ".env"
 
 
 def create_db_and_tables():
