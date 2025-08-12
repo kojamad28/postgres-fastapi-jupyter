@@ -1,6 +1,6 @@
 FROM python:3.13
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 
 ARG REQ_DIR
 COPY ${REQ_DIR} ./${REQ_DIR}
