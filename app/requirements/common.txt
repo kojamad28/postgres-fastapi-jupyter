@@ -1,7 +1,5 @@
 psycopg
 sqlmodel
 sqlacodegen
-fastapi[all]
 fastapi-structlog
-uvicorn[standard]
 alembic
