@@ -1,11 +1,12 @@
 from pathlib import Path
+from typing import Union
 
 from dotenv import dotenv_values
 from sqlalchemy import create_engine, engine, URL
 from sqlalchemy.orm import sessionmaker
 
 
-def get_engine(dotenv_path: str) -> engine.Engine:
+def get_engine(dotenv_path: Union[Path, str]) -> engine.Engine:
     config = dotenv_values(dotenv_path)
 
     url_object = URL.create(
